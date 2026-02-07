@@ -9,6 +9,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        anton: "var(--font-anton)",
+        geist: "var(--font-geist-sans)",
+        mono: "var(--font-geist-mono)",
+      },
       colors: {
         sultan: {
           black: "#050505",
