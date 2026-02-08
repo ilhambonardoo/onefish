@@ -67,7 +67,7 @@ export default function FeaturedFish() {
             </span>
           </h2>
           <p className="text-neutral-100 text-lg max-w-2xl mx-auto">
-            Pilihan ikan langka dan eksklusif untuk para kolektor sejati
+            Rare and exclusive fish for true collectors
           </p>
         </motion.div>
 
