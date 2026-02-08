@@ -10,6 +10,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-anton: var(--font-anton);
+  --font-permanent-marker: var(--font-permanent-marker);
+  --font-nb: var(--font-nb);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +46,16 @@ body {
   color: #ffffff;
   transform: scale(1.1);
   transition: all 0.3s ease;
+}
+
+.hero-swiper-costum[data-beginning="true"] .swiper-button-prev {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-swiper-costum[data-end="true"] .swiper-button-next {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .hero-swiper-custom .swiper-button-next,

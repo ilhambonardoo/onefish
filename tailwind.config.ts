@@ -13,6 +13,8 @@ export default {
         anton: "var(--font-anton)",
         geist: "var(--font-geist-sans)",
         mono: "var(--font-geist-mono)",
+        permanent_marker: "var(--font-permanent-marker)",
+        nb: "var(--font-nb)",
       },
       colors: {
         sultan: {
