@@ -1,27 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SlPlane } from "react-icons/sl";
+import { FaRegStar } from "react-icons/fa6";
+import { IoShieldCheckmarkOutline } from "react-icons/io5";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
 
 const features = [
   {
-    title: "Kualitas",
-    description: "Terjamin dan teruji",
-    icon: "⭐",
+    title: "Unrivaled Quality",
+    description: "Rigorously tested for absolute perfection.",
+    icon: <FaRegStar size={30} />,
   },
   {
-    title: "Export Import",
-    description: "Internasional berkualitas",
-    icon: "✈️",
+    title: "Global Reach",
+    description: "International standards, delivered worldwide.",
+    icon: <SlPlane size={30} />,
   },
   {
-    title: "Sehat",
-    description: "Ikan yang kuat dan sehat",
-    icon: "💪",
+    title: "Peak Vitality",
+    description: "Robust, disease-free, and thriving specimens.",
+    icon: <MdOutlineHealthAndSafety size={30} />,
   },
   {
-    title: "Perawatan Terajaga",
-    description: "Perawatan profesional terbaik",
-    icon: "🛡️",
+    title: "Meticulous Care",
+    description: "Curated by professional aquatic experts.",
+    icon: <IoShieldCheckmarkOutline size={30} />,
   },
 ];
 
@@ -53,11 +57,11 @@ export default function WhyChooseUs() {
             </span>
           </h2>
           <p className="text-neutral-100 text-lg">
-            Komitmen kami terhadap kualitas dan kepuasan pelanggan
+            Quality Assured. Satisfaction Defined.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, idx) => (
             <motion.div
               key={idx}
@@ -67,7 +71,7 @@ export default function WhyChooseUs() {
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="group relative"
             >
-              <div className="relative p-8 rounded-xl border border-stone-500/20 bg-neutral-200 backdrop-blur-sm hover:border-stone-400/50 hover:bg-neutral-100/50 transition-all duration-300 h-full">
+              <div className="relative p-8 rounded-xl backdrop-blur-sm border border-stone-400 hover:border-stone-400/50 hover:bg-neutral-100/50 transition-all duration-300 h-full">
                 <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-linear-to-br from-stone-400/10 to-stone-500/10 transition-opacity duration-300"></div>
 
                 <div className="relative">
@@ -75,10 +79,10 @@ export default function WhyChooseUs() {
                     {feature.icon}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-black mb-3">
+                  <h3 className="text-2xl font-bold text-white mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-neutral-900 leading-relaxed">
+                  <p className="text-neutral-100 leading-relaxed">
                     {feature.description}
                   </p>
 
@@ -97,7 +101,7 @@ export default function WhyChooseUs() {
           className="mt-16 text-center"
         >
           <p className="text-neutral-400 text-lg mb-6">
-            Hubungi kami untuk konsultasi gratis
+            Start the Conversation.
           </p>
           <motion.button
             whileHover={{
@@ -107,7 +111,7 @@ export default function WhyChooseUs() {
             whileTap={{ scale: 0.95 }}
             className="px-12 py-4 bg-linear-to-r from-stone-400 to-stone-500 text-black font-geist font-bold rounded-lg hover:shadow-xl transition-all duration-300"
           >
-            Hubungi Kami
+            Contact Us
           </motion.button>
         </motion.div>
       </motion.div>
