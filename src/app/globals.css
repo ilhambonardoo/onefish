@@ -34,14 +34,38 @@ body {
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
+.hero-swiper-custom {
+  --swiper-navigation-color: #e7e5e4;
+  --swiper-pagination-color: #e7e5e4;
+}
+
+.hero-swiper-custom .swiper-button-next:hover,
+.hero-swiper-custom .swiper-button-prev:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.hero-swiper-custom .swiper-button-next,
+.hero-swiper-custom .swiper-button-prev {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero-swiper-custom .swiper-button-next,
+  .hero-swiper-custom .swiper-button-prev {
+    display: flex;
+  }
+}
+
 .swiper-pagination-bullet {
-  background-color: rgb(153, 143, 131);
+  background-color: rgb(255, 255, 255);
   opacity: 0.6;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: rgb(57, 50, 40);
+  background-color: rgb(255, 255, 255);
   opacity: 1;
 }
