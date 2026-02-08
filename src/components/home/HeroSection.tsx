@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { useState } from "react";
 import { fishData } from "@/src/lib/data/fishExample";
+import Link from "next/link";
 
 export default function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -26,13 +27,13 @@ export default function HeroSection() {
         viewport={{ once: false, amount: 0.3 }}
         className="flex-col flex w-full relative z-10 pt-24"
       >
-        <div className="mt-8 md:mt-16 flex-col flex gap-8 items-center">
+        <div className="mt-8 md:mt-16 flex-col md:mx-8 flex gap-8 items-center md:items-start">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
-            className="text-center text-transparent bg-clip-text bg-linear-to-r from-stone-300 via-stone-200 to-stone-300 font-permanent_marker text-6xl md:text-7xl font-bold drop-shadow-lg"
+            className="text-center md:text-left text-transparent bg-clip-text bg-linear-to-r from-stone-300 via-stone-200 to-stone-300 font-permanent_marker text-6xl md:text-7xl font-bold drop-shadow-lg"
           >
             ONEFISH
           </motion.h1>
@@ -57,12 +58,11 @@ export default function HeroSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: false, amount: 0.3 }}
-            className="mx-3 md:mx-0"
+            className="w-full"
           >
-            <p className="font-geist text-base md:text-lg text-neutral-100 text-center max-w-2xl leading-relaxed">
-              Jelajahi koleksi ikan hias premium dengan kualitas terbaik. Setiap
-              ikan dipilih dengan cermat untuk kesehatan dan keindahan yang
-              sempurna.
+            <p className="max-w-7xl font-nb font-bold md:text-5xl text-stone-100  md:text-left text-center w-full md:leading-16 tracking-wide">
+              Dive into a curated collection of aquatic excellence. Meticulously
+              hand-picked to ensure unrivaled vitality and breathtaking beauty.
             </p>
           </motion.div>
         </div>
@@ -128,46 +128,19 @@ export default function HeroSection() {
           viewport={{ once: false, amount: 0.3 }}
           className="mt-16 flex justify-center pb-8"
         >
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(214, 211, 202, 0.6)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-linear-to-r from-stone-400 to-stone-500 text-black font-geist font-bold rounded-lg hover:shadow-xl transition-all duration-300"
-          >
-            Jelajahi Koleksi
-          </motion.button>
+          <Link href={"/type"}>
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(214, 211, 202, 0.6)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-10 py-4 bg-linear-to-r cursor-pointer from-stone-100 to-stone-200 text-black font-geist font-bold rounded-lg hover:shadow-xl transition-all duration-300"
+            >
+              Visit Collection
+            </motion.button>
+          </Link>
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        viewport={{ once: false, amount: 0.3 }}
-        className="grid grid-cols-3 gap-4 md:gap-8 px-4 md:px-8 pb-12 relative z-10"
-      >
-        {[
-          { label: "Spesies", value: "150+" },
-          { label: "Pelanggan", value: "5000+" },
-          { label: "Kualitas", value: "Terjamin" },
-        ].map((stat, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 + idx * 0.1, duration: 0.6 }}
-            className="bg-neutral-900/40 backdrop-blur-md border border-stone-500/20 rounded-lg p-4 md:p-6 text-center"
-          >
-            <p className="text-stone-200 font-bold text-2xl md:text-3xl mb-2">
-              {stat.value}
-            </p>
-            <p className="text-neutral-100 font-geist text-sm md:text-base">
-              {stat.label}
-            </p>
-          </motion.div>
-        ))}
       </motion.div>
     </section>
   );
