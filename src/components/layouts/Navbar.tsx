@@ -71,7 +71,7 @@ const Navbar = () => {
             {navLinks.map((Nav) => (
               <motion.div key={Nav.href} whileHover={{ scale: 1.1 }}>
                 <Link href={Nav.href}>
-                  <p className="text-2xl text-neutral-950 hover:text-neutral-600 transition">
+                  <p className="text-2xl text-neutral-100 hover:text-stone-300 transition">
                     {Nav.label}
                   </p>
                 </Link>
