@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
+
 import { Geist, Geist_Mono, Anton, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import Sidebar from "../components/layouts/Sidebar";
@@ -15,7 +17,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const anton = Anton({ weight: "400" });
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+});
+
+const permanentMarker = Permanent_Marker({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-permanent-marker",
+});
+
+const nb = localFont({
+  src: [
+    {
+      path: "./fonts/nb-international-regular/NB International Regular/NB-International.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-nb",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "One Fish | Dashboard",
@@ -35,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${anton.style} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} ${permanentMarker.variable} ${nb.variable} antialiased`}
       >
         <Navbar />
         <Sidebar />
