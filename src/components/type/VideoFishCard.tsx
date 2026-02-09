@@ -1,15 +1,26 @@
 import { ikans } from "@/src/lib/data/ikanMP4";
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { Info, MessageCircle } from "lucide-react";
 import { CldVideoPlayer } from "next-cloudinary";
 
 export const VideoFishCard = ({
   fish,
   index,
+  onOpenDetails,
 }: {
   fish: (typeof ikans)[0];
   index: number;
+  onOpenDetails: (fish: (typeof ikans)[0]) => void;
 }) => {
+  const handleOrder = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const message = `Halo, saya tertarik dengan ikan ${fish.label}. Apakah barang masih ada?`;
+    const url = `https://wa.me/${fish.whatsapp || "62895614532654"}?text=${encodeURIComponent(
+      message,
+    )}`;
+    window.open(url, "_blank");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -27,7 +38,7 @@ export const VideoFishCard = ({
           autoPlay={false}
           muted={true}
           fluid={true}
-          className="!rounded-none"
+          className="rounded-none!"
         />
       </div>
 
@@ -36,28 +47,27 @@ export const VideoFishCard = ({
           {fish.label}
         </h3>
 
-        <ul className="space-y-2 flex-1 mb-6">
-          {fish.description.split("\n").map((point, idx) => (
-            <li
-              key={idx}
-              className="text-xs text-stone-400 leading-relaxed flex items-start gap-2"
-            >
-              <span className="text-emerald-400 font-bold mt-0.5 shrink-0">
-                ✓
-              </span>
-              <span>{point}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="flex gap-3 mt-auto">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleOrder}
+            className="flex-1 bg-linear-to-r cursor-pointer from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-2.5 px-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 text-sm"
+          >
+            <MessageCircle size={16} />
+            Pesan
+          </motion.button>
 
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-300"
-        >
-          <MessageCircle size={18} />
-          Chat Now
-        </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => onOpenDetails(fish)}
+            className="flex-1 bg-stone-800 hover:bg-stone-700 cursor-pointer border border-stone-700 hover:border-stone-600 text-stone-200 font-semibold py-2.5 px-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 text-sm"
+          >
+            <Info size={16} />
+            Detail
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );
