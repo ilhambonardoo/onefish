@@ -1,5 +1,5 @@
 import VideoFishSection from "@/src/components/type/VideoFishSection";
-
+import HeroSectionType from "@/src/components/type/HeroSectionType";
 export const metadata = {
   title: "Fish Species | OneFish",
   description:
@@ -9,6 +9,7 @@ export const metadata = {
 export default function TypePage() {
   return (
     <main className="bg-black">
+      <HeroSectionType />
       <VideoFishSection />
     </main>
   );
