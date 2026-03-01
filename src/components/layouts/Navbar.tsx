@@ -4,16 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/type", label: "Type" },
   { href: "/contact", label: "Contact" },
-  { href: "/maps", label: "Map" },
-  { href: "/quality", label: "Quality" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const currentPath = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,8 +70,11 @@ const Navbar = () => {
           >
             {navLinks.map((Nav) => (
               <motion.div key={Nav.href} whileHover={{ scale: 1.1 }}>
-                <Link href={Nav.href}>
-                  <p className="text-2xl text-neutral-100 hover:text-stone-300 transition">
+                <Link
+                  href={Nav.href}
+                  className={`${Nav.href === currentPath ? "text-white font-semibold" : "text-neutral-500"}`}
+                >
+                  <p className="text-2xl hover:text-stone-300 transition">
                     {Nav.label}
                   </p>
                 </Link>
