@@ -5,6 +5,7 @@ import { SlPlane } from "react-icons/sl";
 import { FaRegStar } from "react-icons/fa6";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
+import Link from "next/link";
 
 const features = [
   {
@@ -103,16 +104,18 @@ export default function WhyChooseUs() {
           <p className="text-neutral-400 text-lg mb-6">
             Start the Conversation.
           </p>
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(214, 211, 202, 0.6)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-4 bg-linear-to-r from-stone-400 to-stone-500 text-black font-geist font-bold rounded-lg hover:shadow-xl transition-all duration-300"
-          >
-            Contact Us
-          </motion.button>
+          <Link href={"/contact"}>
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(214, 211, 202, 0.6)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-4 bg-linear-to-r cursor-pointer from-stone-400 to-stone-500 text-black font-geist font-bold rounded-lg hover:shadow-xl transition-all duration-300"
+            >
+              Contact Us
+            </motion.button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

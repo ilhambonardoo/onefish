@@ -25,34 +25,36 @@ export default function HeroSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false, amount: 0.3 }}
-        className="flex-col flex w-full relative z-10 pt-24"
+        className=" max-w-7xl mx-auto flex-col flex w-full relative z-10 pt-24"
       >
-        <div className="mt-8 md:mt-16 flex-col md:mx-8 flex gap-8 items-center md:items-start">
+        <div className="mt-8 md:mt-16 flex-col md:mx-8 flex gap-4 ml-5 items-start">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: false, amount: 0.3 }}
-            className="text-center md:text-left text-transparent bg-clip-text bg-linear-to-r from-stone-300 via-stone-200 to-stone-300 font-permanent_marker text-6xl md:text-7xl font-bold drop-shadow-lg"
+            className="text-left text-transparent bg-clip-text bg-linear-to-r from-stone-300 via-stone-200 to-stone-300 font-permanent_marker text-6xl md:text-7xl font-bold drop-shadow-lg"
           >
             ONEFISH
           </motion.h1>
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="h-1 w-32 bg-linear-to-r from-stone-300 to-stone-400 rounded-full"
-          ></motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: false, amount: 0.3 }}
-            className="text-center text-sm md:text-lg text-stone-300/80 font-geist tracking-widest uppercase"
+            className="text-left text-sm md:text-lg text-stone-300/80 font-geist tracking-widest uppercase"
           >
             Premium Fish Collection
           </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="h-1 w-64 bg-linear-to-r from-stone-300 to-stone-400 rounded-full"
+          ></motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -60,7 +62,7 @@ export default function HeroSection() {
             viewport={{ once: false, amount: 0.3 }}
             className="w-full"
           >
-            <p className="max-w-7xl font-nb font-bold md:text-5xl text-stone-100  md:text-left text-center w-full md:leading-16 tracking-wide">
+            <p className="text-stone-200 text-3xl md:text-5xl max-w-7xl text-left mt-12">
               Dive into a curated collection of aquatic excellence. Meticulously
               hand-picked to ensure unrivaled vitality and breathtaking beauty.
             </p>
@@ -97,7 +99,7 @@ export default function HeroSection() {
                   src={fish.image}
                   alt={fish.title}
                   fill
-                  className="object-cover"
+                  className="object-cover p-3 rounded-2xl"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent flex flex-col items-center justify-end pb-12">
                   <motion.div
