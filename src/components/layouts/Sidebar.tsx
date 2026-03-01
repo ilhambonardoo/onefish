@@ -3,20 +3,50 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
-  const navLinks = [{ href: "/", label: "Home" }];
+  const sidebarRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/type", label: "Type" },
+    { href: "/contact", label: "Contact" },
+  ];
 
   function toggleSideBar() {
     setIsOpenSidebar(!isOpenSidebar);
   }
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setIsOpenSidebar(false);
+      }
+    }
+
+    if (isOpenSidebar) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpenSidebar]);
+
   return (
     <>
       <nav
+        ref={sidebarRef}
         className={`h-screen md:hidden transition-all duration-300  ${isOpenSidebar ? "w-64  shadow-xl border-r border-neutral-200 bg-black/40 backdrop-blur-2xl" : "w-20 bg-transparent"} z-50 fixed left-0 `}
       >
         <div className="mx-4 mt-5">
@@ -58,7 +88,7 @@ export default function Sidebar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="font-semibold text-2xl"
+                    className={`${link.href === pathname && "text-white font-semibold"} font-semibold text-neutral-500 text-xl`}
                   >
                     {link.label}
                   </Link>
