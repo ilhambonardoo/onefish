@@ -1,6 +1,7 @@
 "use client";
 
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import { socials } from "@/src/lib/utils/socialmedia";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -11,39 +12,18 @@ const Footer = () => {
             Social Media
           </h1>
           <ul className="space-y-3">
-            <li>
-              <a
-                href="https://instagram.com"
+            {socials.map((social, index) => (
+              <Link
+                key={index}
+                href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-pink-500 transition text-sm md:text-base"
               >
-                <Instagram size={20} />
-                <span>Instagram</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-blue-500 transition text-sm md:text-base"
-              >
-                <Facebook size={20} />
-                <span>Facebook</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://wa.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-green-500 transition text-sm md:text-base"
-              >
-                <MessageCircle size={20} />
-                <span>WhatsApp</span>
-              </a>
-            </li>
+                {social.icon}
+                <span>{social.label}</span>
+              </Link>
+            ))}
           </ul>
         </div>
         <div className="flex-1">
