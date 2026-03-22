@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, spring } from "framer-motion";
+import React, { useState } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -22,7 +23,33 @@ const itemVariants = {
   },
 };
 
+const dataForm = {
+  name: "",
+  phone: "",
+  message: "",
+};
+
 const FeatureContactSection = () => {
+  const [contactForm, setContactForm] = useState(dataForm);
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const noHp = "6285813044399";
+    const message = `Hi, saya ingin bertanya tentang ikan.\n\nName: ${contactForm.name.trim()}\nPhone: ${contactForm.phone.trim()}\nMessage: ${contactForm.message.trim()}`;
+    const whatsAppUrl = `https://wa.me/${noHp}?text=${encodeURIComponent(
+      message,
+    )}`;
+
+    window.open(whatsAppUrl, "_blank", "noopener,noreferrer");
+  }
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    setContactForm((formData) => ({
+      ...formData,
+      [e.target.name]: e.target.value,
+    }));
+  }
+
   return (
     <section className="w-full lg:w-1/2">
       <motion.div
@@ -38,7 +65,7 @@ const FeatureContactSection = () => {
         >
           Questions fast
         </motion.h2>
-        <form className="flex flex-col gap-6">
+        <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
           <motion.div variants={itemVariants} className="flex flex-col gap-2">
             <label
               htmlFor="name"
@@ -48,7 +75,10 @@ const FeatureContactSection = () => {
             </label>
             <input
               id="name"
+              name="name"
               type="text"
+              value={contactForm.name}
+              onChange={handleChange}
               placeholder="Input your name"
               className="w-full bg-zinc-900/50 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-sultan-gold focus:ring-1 focus:ring-sultan-gold transition-colors duration-300"
             />
@@ -63,6 +93,9 @@ const FeatureContactSection = () => {
             </label>
             <input
               id="phone"
+              name="phone"
+              value={contactForm.phone}
+              onChange={handleChange}
               type="tel"
               placeholder="+1 23245 2098"
               className="w-full bg-zinc-900/50 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-sultan-gold focus:ring-1 focus:ring-sultan-gold transition-colors duration-300"
@@ -78,7 +111,10 @@ const FeatureContactSection = () => {
             </label>
             <textarea
               id="message"
+              name="message"
               rows={5}
+              value={contactForm.message}
+              onChange={handleChange}
               placeholder="Write your message......"
               className="w-full bg-zinc-900/50 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-zinc-600 focus:outline-none focus:border-sultan-gold focus:ring-1 focus:ring-sultan-gold transition-colors duration-300 resize-none"
             />

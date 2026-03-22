@@ -1,5 +1,5 @@
 import HeroSectionContact from "@/src/components/contact/HeroSectionContact";
-import FeatureContactSection from "@/src/components/contact/FeatureContactSection";
+import FeatureContactSection from "@/src/components/contact/ContactFormSection";
 import SocialMediaSection from "@/src/components/contact/SocialMediaSection";
 
 const page = () => {
