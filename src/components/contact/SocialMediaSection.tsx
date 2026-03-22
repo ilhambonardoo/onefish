@@ -2,7 +2,7 @@
 import { motion, spring } from "framer-motion";
 
 import Link from "next/link";
-import { socials } from "@/src/lib/utils/socialmedia";
+import { socials } from "@/src/lib/constant/socialmedia";
 const containerItemVariants = {
   hidden: { opacity: 0 },
   visible: {

@@ -1,6 +1,6 @@
 "use client";
 
-import { socials } from "@/src/lib/utils/socialmedia";
+import { socials } from "@/src/lib/constant/socialmedia";
 import Link from "next/link";
 
 const Footer = () => {
