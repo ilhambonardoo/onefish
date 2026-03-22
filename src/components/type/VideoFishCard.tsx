@@ -15,7 +15,7 @@ export const VideoFishCard = ({
   const handleOrder = (e: React.MouseEvent) => {
     e.stopPropagation();
     const message = `Halo, saya tertarik dengan ikan ${fish.label}. Apakah barang masih ada?`;
-    const url = `https://wa.me/${fish.whatsapp || "62895614532654"}?text=${encodeURIComponent(
+    const url = `https://wa.me/${fish.whatsapp || "6285813044399"}?text=${encodeURIComponent(
       message,
     )}`;
     window.open(url, "_blank");
